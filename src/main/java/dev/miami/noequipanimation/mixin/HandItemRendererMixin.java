@@ -3,10 +3,7 @@ package dev.miami.noequipanimation.mixin;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.render.item.HeldItemRenderer;
 import net.minecraft.client.util.math.MatrixStack;
-import net.minecraft.item.ItemStack;
-import net.minecraft.item.Items;
-import net.minecraft.item.RangedWeaponItem;
-import net.minecraft.item.ToolItem;
+import net.minecraft.item.*;
 import net.minecraft.util.Arm;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
@@ -21,9 +18,9 @@ public class HandItemRendererMixin {
 		if (client.player == null) return;
 		ItemStack stack = arm == client.player.getMainArm() ? client.player.getMainHandStack() : client.player.getOffHandStack();
 		if ((stack.getItem() instanceof ToolItem) ||
-                (stack.getItem() instanceof RangedWeaponItem) ||
-		(stack.getItem() instanceof BlockItem ||
-                client.player.getItemCooldownManager().isCoolingDown(stack.getItem())) {
+				(stack.getItem() instanceof RangedWeaponItem) ||
+				(stack.getItem() instanceof BlockItem ||
+						client.player.getItemCooldownManager().isCoolingDown(stack.getItem())) {
 			return;
 		}
 		int i = arm == Arm.RIGHT ? 1 : -1;
@@ -31,4 +28,3 @@ public class HandItemRendererMixin {
 		ci.cancel();
 	}
 }
-
