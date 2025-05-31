@@ -1,0 +1,7 @@
+{
+	"required": true,
+	"package": "dev.miami.noequipanimation.mixin",
+	"compatibilityLevel": "JAVA_21",
+	"mixins": ["HandItemRendererMixin"],
+	"injectors": {"defaultRequire": 1}
+}
