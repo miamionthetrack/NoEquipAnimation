@@ -22,7 +22,7 @@ public class HandItemRendererMixin {
 		ItemStack stack = arm == client.player.getMainArm() ? client.player.getMainHandStack() : client.player.getOffHandStack();
 		if ((stack.getItem() instanceof ToolItem) ||
                 (stack.getItem() instanceof RangedWeaponItem) ||
-                (stack.getItem() == Items.END_CRYSTAL) ||
+		(stack.getItem() instanceof BlockItem ||
                 client.player.getItemCooldownManager().isCoolingDown(stack.getItem())) {
 			return;
 		}
