@@ -20,7 +20,7 @@ public class HandItemRendererMixin {
 		if ((stack.getItem() instanceof ToolItem) ||
 				(stack.getItem() instanceof RangedWeaponItem) ||
 				(stack.getItem() instanceof BlockItem ||
-						client.player.getItemCooldownManager().isCoolingDown(stack.getItem())) {
+						client.player.getItemCooldownManager().isCoolingDown(stack.getItem()))) {
 			return;
 		}
 		int i = arm == Arm.RIGHT ? 1 : -1;
