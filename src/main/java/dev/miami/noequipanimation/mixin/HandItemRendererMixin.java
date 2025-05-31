@@ -4,6 +4,7 @@ import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.render.item.HeldItemRenderer;
 import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.item.ItemStack;
+import net.minecraft.item.Items;
 import net.minecraft.item.RangedWeaponItem;
 import net.minecraft.item.ToolItem;
 import net.minecraft.util.Arm;
@@ -19,9 +20,10 @@ public class HandItemRendererMixin {
 		MinecraftClient client = MinecraftClient.getInstance();
 		if (client.player == null) return;
 		ItemStack stack = arm == client.player.getMainArm() ? client.player.getMainHandStack() : client.player.getOffHandStack();
-		if (stack.getItem() instanceof ToolItem ||
-				stack.getItem() instanceof RangedWeaponItem ||
-				client.player.getItemCooldownManager().isCoolingDown(stack.getItem())) {
+		if ((stack.getItem() instanceof ToolItem) ||
+                (stack.getItem() instanceof RangedWeaponItem) ||
+                (stack.getItem() == Items.END_CRYSTAL) ||
+                client.player.getItemCooldownManager().isCoolingDown(stack.getItem())) {
 			return;
 		}
 		int i = arm == Arm.RIGHT ? 1 : -1;
